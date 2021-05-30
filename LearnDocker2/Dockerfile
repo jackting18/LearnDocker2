@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["LearnDocker2/LearnDocker2.csproj", "LearnDocker2/"]
-RUN dotnet restore "LearnDocker2/LearnDocker2.csproj"
+COPY ["LearnDocker2.csproj", "."]
+RUN dotnet restore "./LearnDocker2.csproj"
 COPY . .
-WORKDIR "/src/LearnDocker2"
+WORKDIR "/src/."
 RUN dotnet build "LearnDocker2.csproj" -c Release -o /app/build
 
 FROM build AS publish
